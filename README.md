@@ -16,3 +16,5 @@ El repositorio configurado es `carlosmencog/mencolab`. Decap CMS estará disponi
 ## Hosting
 
 Build command: `npm run build`. Output directory: `dist`. Hostinger puede desplegar el proyecto como aplicación Astro conectada a GitHub. Cloudflare puede seguir utilizándose opcionalmente como proxy DNS/WAF o únicamente para alojar el proxy OAuth de Decap. Las cabeceras y redirects base están en `public/_headers` y `public/_redirects`.
+
+En planes Hostinger sin soporte para Web Apps, GitHub Actions genera la rama `hostinger` con el sitio estático compilado. En hPanel se conecta esa rama como proyecto PHP/HTML con raíz `public_html`.
