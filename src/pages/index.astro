@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Header from "../components/en/Header.astro";
+import Hero from "../components/en/Hero.astro";
+import Story from "../components/en/Story.astro";
+import WhyUs from "../components/en/WhyUs.astro";
+import Services from "../components/en/Services.astro";
+import Pillars from "../components/en/Pillars.astro";
+import ProjectsIntro from "../components/en/ProjectsIntro.astro";
+import ContactMarquee from "../components/en/ContactMarquee.astro";
+import Contact from "../components/en/Contact.astro";
+import Footer from "../components/en/Footer.astro";
+const lang = "en";
+---
+<BaseLayout lang={lang} title='MencoLab | Digital solutions for growing businesses' description=''>
+<div class="page-wrapper">
+  <Header />
+  <Hero />
+  <Story />
+  <WhyUs />
+  <Services />
+  <Pillars />
+  <ProjectsIntro />
+  <Portfolio />
+  <ContactMarquee />
+  <Contact />
+  <Footer />
+</div>
+</BaseLayout>

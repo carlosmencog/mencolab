@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+import Motion from "../components/Motion.astro";
+interface Props { lang: string; title: string; description: string; }
+const { lang, title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL("/", Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL("/es/", Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />
+    <link rel="icon" href="/imgs/6793d5d8ef017f4be1869340_image%203.png" />
+    <link rel="apple-touch-icon" href="/imgs/6793d5db29bea5e32a50edee_image%204.png" />
+  </head>
+  <body>
+    <slot />
+    <script is:inline src="/js/lottie.min.js"></script>
+    <Motion />
+  </body>
+</html>

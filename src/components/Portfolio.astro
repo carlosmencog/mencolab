@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+const projects = (await getCollection("portfolio"))
+  .filter(({ data }) => data.visible)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<section id="portfolio">
+  <div class="w-layout-blockcontainer container w-container">
+    <div class="margin-bottom-medium">
+      {projects.map(({ data }, index) => (
+        <a href={data.url} target="_blank" rel="nofollow noopener noreferrer" class="project-link w-inline-block">
+          <div class="w-layout-grid project-item-grid" data-reveal>
+            <div class="project-content"><div class="project-content-inner"><div class="project-info"><div class="project-number">{String(index + 1).padStart(2, "0")}.</div></div><h3 class="project-title">{data.title}</h3></div></div>
+            <div class="project-thumbnail-wrapper"><div class="project-thumbnail-inner"><img loading="lazy" src={data.image} alt={data.alt} class="project-thumbnail" /></div></div>
+          </div>
+          <div class="divider-bottom"><div class="divider-mutted"></div></div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

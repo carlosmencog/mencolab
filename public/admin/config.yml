@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: carlosmencog/mencolab
+  branch: main
+media_folder: public/imgs/portfolio
+public_folder: /imgs/portfolio
+publish_mode: editorial_workflow
+collections:
+  - name: portfolio
+    label: Portfolio
+    folder: src/content/portfolio
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{fields.order}}-{{slug}}"
+    sortable_fields: [order, title]
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: URL, name: url, widget: string }
+      - { label: Image, name: image, widget: image }
+      - { label: Alternative text, name: alt, widget: string }
+      - { label: Order, name: order, widget: number, value_type: int, min: 1 }
+      - { label: Visible, name: visible, widget: boolean, default: true }

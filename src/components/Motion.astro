@@ -1,0 +1,55 @@
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const menuButton = document.querySelector<HTMLElement>("[data-menu-button]");
+  const menu = document.querySelector<HTMLElement>("[data-menu]");
+  menuButton?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("is-open") ?? false;
+    menuButton.setAttribute("aria-expanded", String(open));
+  });
+  menu?.addEventListener("click", (event) => {
+    if ((event.target as Element).closest("a")) {
+      menu.classList.remove("is-open");
+      menuButton?.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-current-year]").forEach((el) => {
+    el.textContent = String(new Date().getFullYear());
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-lottie-path]").forEach((el) => {
+    window.lottie?.loadAnimation({
+      container: el,
+      renderer: "svg",
+      loop: true,
+      autoplay: !reduceMotion,
+      path: el.dataset.lottiePath,
+    });
+  });
+
+  if (!reduceMotion) {
+    const intro = gsap.timeline({ defaults: { duration: .65, ease: "power2.out" } });
+    intro.from(".page-wrapper", { autoAlpha: 0 })
+      .from("[data-hero-reveal]", { autoAlpha: 0, y: 12, stagger: .08 }, "<.1");
+
+    gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+      gsap.from(el, {
+        autoAlpha: 0,
+        y: 16,
+        duration: .5,
+        ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-marquee]").forEach((track) => {
+      gsap.to(track, { xPercent: -50, duration: track.dataset.marquee === "slow" ? 28 : 18, ease: "none", repeat: -1 });
+    });
+  }
+
+  document.fonts.ready.then(() => ScrollTrigger.refresh());
+</script>

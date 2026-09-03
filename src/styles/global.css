@@ -1,0 +1,36 @@
+@import url('/css/level-8-design-2-0.webflow.shared.b98ff1b36.css');
+
+@font-face { font-family: Aeonik; src: url('/brand/Aeonik-Regular.otf') format('opentype'); font-display: swap; font-weight: 400; }
+@font-face { font-family: Aeonik; src: url('/brand/Aeonik-Light.otf') format('opentype'); font-display: swap; font-weight: 300; }
+@font-face { font-family: Aeonik; src: url('/brand/AeonikBold.otf') format('opentype'); font-display: swap; font-weight: 700; }
+
+html, body { max-width: 100%; overflow-x: clip; }
+
+/* Replaces Webflow's generated w-node placement for CMS-driven cards. */
+#portfolio .project-content {
+  grid-area: 1 / 1 / 2 / 9 !important;
+}
+
+#portfolio .project-thumbnail-wrapper {
+  grid-area: 1 / 7 / 2 / 13 !important;
+}
+
+@media (max-width: 991px) {
+  #portfolio .project-content {
+    grid-area: 2 / 1 / 3 / 13 !important;
+  }
+
+  #portfolio .project-thumbnail-wrapper {
+    grid-area: 1 / 1 / 2 / 13 !important;
+  }
+}
+
+[data-menu-button] { appearance: none; border: 0; background: transparent; }
+@media (max-width: 991px) {
+  [data-menu] { display: none; }
+  [data-menu].is-open { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
