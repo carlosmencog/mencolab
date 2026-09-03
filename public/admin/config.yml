@@ -2,6 +2,8 @@ backend:
   name: github
   repo: carlosmencog/mencolab
   branch: main
+  base_url: https://mencolab-decap-oauth.carlosmenco-1d4.workers.dev
+  auth_endpoint: /auth
 media_folder: public/imgs/portfolio
 public_folder: /imgs/portfolio
 publish_mode: editorial_workflow
